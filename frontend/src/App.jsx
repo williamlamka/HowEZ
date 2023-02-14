@@ -14,6 +14,8 @@ import LoginedNavber from "./component/LoginedNavber"
 import Profile from "./pages/Profile";
 import { LoginContext } from "./context/LoginConext";
 import Axios from "axios";
+import Payment from "./pages/Payment";
+import OrderDetail from "./pages/orderDetail";
 
 export default function App() {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -47,7 +49,9 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/shoppingCart" element={<ShoppingCart />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/order/:id" element={<OrderDetail />} />
           <Route path="/profile" element={loginStatus?(<Profile />):(<div />)} />
+          <Route path="/payment" element={<Payment/>} />
         </Routes>
       </LoginContext.Provider>
     </BrowserRouter >

@@ -14,7 +14,7 @@ const UPDATE_INITIAL_STATE = {
 
 export default function Profile() {
     const [data, setData] = useState(UPDATE_INITIAL_STATE);
-    const { userId, setUserId } = useContext(LoginContext);
+    const { setUserName, userId, setUserId } = useContext(LoginContext);
     const [prompt, setPrompt] = useState("");
 
     useEffect(() => {
@@ -49,6 +49,7 @@ export default function Profile() {
         }, { withCredentials: true })
             .then(res => {
                 setPrompt(res.data.detail);
+                setUserName(data.firstName);
             });
     };
 

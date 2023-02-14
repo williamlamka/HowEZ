@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { LoginContext } from "../context/LoginConext";
+import { useNavigate } from "react-router-dom";
 
 const INITIAL_STATE = {
     _id: "",
@@ -14,19 +15,24 @@ export default function ShoppingCart() {
     const { loginStatus } = useContext(LoginContext);
     const [cart, setCart] = useState([INITIAL_STATE]);
     const [prompt, setPropmt] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (loginStatus) {
             Axios.get("http://localhost:3005/api/user/cart", { withCredentials: true })
                 .then((res) => {
-                    if(res.data.detail){
+                    if (res.data.detail) {
                         setCart(res.data.detail);
                     }
-                    setPropmt("");
-                })
+                });
         }
-    }, []);
-    
+    }, [prompt]);
+
+    function checkOutHandler(e) {
+        e.preventDefault();
+        navigate("/payment");
+    }
+
     function onClickHandler(key) {
         Axios.post("http://localhost:3005/api/user/cart/delete", {
             id: key
@@ -48,7 +54,7 @@ export default function ShoppingCart() {
                     <h3 class="text-red-600 font-bold pt-2">{prompt}</h3>
                 </div>
                 <table class="border border-purple-700">
-                    <thead class="text-center bg-purple-300 text-gray-900">
+                    <thead class="text-left bg-purple-300 text-gray-900">
                         <tr class="h-12 text-xl">
                             <th>Product</th>
                             <th>Name</th>
@@ -57,7 +63,7 @@ export default function ShoppingCart() {
                         </tr>
                     </thead>
                     <tbody>
-                    {cart[0]._id? (cart.map(item => {
+                        {cart[0]._id ? (cart.map(item => {
                             return (
                                 <tr key={item._id}>
                                     <td>
@@ -74,9 +80,17 @@ export default function ShoppingCart() {
                                     </td>
                                 </tr>
                             )
-                        })): <div/>}
+                        })) : <div />}
                     </tbody>
                 </table>
+                {cart[0]._id? (<div class="flex justify-end">
+                    <button
+                        onClick={(e) => { checkOutHandler(e) }}
+                        className="flex items-center rounded-md border border-transparent bg-pink-600 py-3 px-8 text-base font-medium text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                    >
+                        Check out
+                    </button>
+                </div>):<div/>}
             </div>
         </div>
     )

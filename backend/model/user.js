@@ -23,7 +23,17 @@ const userSchema = new mongoose.Schema({
         type: [String]
     },
     order: {
-        type: [String]
+        type: [{
+            products: {
+                type: [String]
+            },
+            price: {
+                type: Number
+            },
+            orderDate: {
+                type: Date
+            }
+        }]
     }
 })
 

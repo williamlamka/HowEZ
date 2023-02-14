@@ -89,7 +89,7 @@ export default function SingleProduct() {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <div class="flex gap-x-12">
-              <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+              <p className="text-3xl tracking-tight text-gray-900">${product.price}</p>
               <h3 class="pt-2 text-red-600 font-bold">{errorPrompt}</h3>
             </div>
 

@@ -31,7 +31,6 @@ passport.use(new GoogleStrategy({
                 newUser.save();
                 return done(null, newUser);
             } else {
-                console.log("have");
                 return done(null, user);
             }
         });
@@ -120,13 +119,16 @@ router.get("/google/redirect", passport.authenticate("google", { session: false 
 });
 
 //for refresh
-router.get("/verifyLogin", verifyToken, function (req, res) {
+router.get("/verifyLogin", verifyToken, async function (req, res) {
     if (req.user) {
-        res.json({
-            "auth": true,
-            "id": req.user.id,
-            "name": req.user.name
-        });
+        const user = await User.findById(req.user.id)
+        if(user){
+            res.json({
+                "auth": true,
+                "id": user.id,
+                "name": user.firstName
+            });
+        }   
     }
 });
 
