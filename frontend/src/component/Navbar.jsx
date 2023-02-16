@@ -89,14 +89,11 @@ export default function Navbar() {
             <Dialog.Panel focus="true" className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
               <div className="flex h-9 items-center justify-between">
                 <div className="flex">
-                  <Link to="#" className="-m-1.5 p-1.5">
-                    <span className="sr-only">Your Company</span>
-                    <img
-                      className="h-8"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                      alt=""
-                    />
-                  </Link>
+                    <Link to="/" className="flex -m-1.5 p-1.5 gap-x-8">
+                      <span className="sr-only">Your Company</span>
+                      <img className="h-8" src="/logo.png" alt="" />
+                      <span class="text-lg font-semibold text-gray-900 hover:text-gray-500 ">HowEZ</span>
+                    </Link>
                 </div>
                 <div className="flex">
                   <button
@@ -128,6 +125,12 @@ export default function Navbar() {
                       className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
                     >
                       Sign up
+                    </Link>
+                    <Link
+                      to="/login"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      Sign in
                     </Link>
                   </div>
                   <div className="py-6">

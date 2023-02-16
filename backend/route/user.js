@@ -2,7 +2,7 @@ import express from "express";
 import User from "../model/user.js";
 import Product from "../model/product.js"
 import { verifyUser } from "../jwt/verifyJWT.js";
-import { nanoid } from 'nanoid'
+import { transporter } from "../nodemailer/transporter.js";
 
 const router = express.Router();
 
@@ -142,9 +142,9 @@ router.get("/order/:id", verifyUser, async function (req, res) {
                 return item;
             }
         });
-        orderList = orderList.filter(function( element ) {
+        orderList = orderList.filter(function (element) {
             return element !== undefined;
-         });
+        });
         const productList = await Promise.all(orderList[0].products.map(async (item) => {
             return await Product.findById(item);
         }));
@@ -214,6 +214,19 @@ router.post("/order", verifyUser, async function (req, res) {
         await User.findByIdAndUpdate(req.user.id,
             { "$set": { cart: [] } },
         );
+
+        const user = await User.findById(req.user.id);
+        const mailContent = `
+            <h3>Your order is successful created</h3>
+            <h3>Thank you for using HowEZ!</h3>
+        `
+        await transporter.sendMail({
+            from: '"HowEZ" <noreply@HowEZ.com>', // sender address
+            to: user.email, // list of receivers
+            subject: "Confirmation Email of your order", // Subject line
+            html: mailContent, // html body
+        })
+
         res.json({
             "add": true,
             "delete": true
