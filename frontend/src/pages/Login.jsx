@@ -37,7 +37,7 @@ export default function Login() {
   }
 
   async function onClickHandler(e) {
-    window.open("http://localhost:3005/api/auth/google", "_self");
+    window.open("https://how-ez.vercel.app/api/auth/google", "_self");
   }
 
   return (

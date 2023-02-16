@@ -15,7 +15,7 @@ export default function Feature(){
                 </div>
                 <div class="flex flex-col items-center py-12 gap-y-12 h-96 sm:w-1/2 md:w-1/3">
                     <FontAwesomeIcon icon="fa-circle-check" size="4x"/>
-                    <h1 class="text-3xl font-bold">High Quanlity</h1>
+                    <h1 class="text-3xl font-bold">High Quality</h1>
                     <h3 class="text-xl font-bold">100% New </h3>
                 </div>
                 <div class="flex flex-col items-center py-12 gap-y-12 h-96 sm:w-1/2 md:w-1/3">
