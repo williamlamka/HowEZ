@@ -23,7 +23,7 @@ export default function App() {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    Axios.get("http://localhost:3005/api/auth/verifyLogin", { withCredentials: true })
+    Axios.get("https://how-ez.vercel.app/api/auth/verifyLogin", { withCredentials: true })
       .then(res => {
         if (res.data.auth) {
           setLoginStatus(true);

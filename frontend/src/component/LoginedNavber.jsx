@@ -26,7 +26,7 @@ export default function Navbar() {
 
     const logOutHandler = async(e) => {
         e.preventDefault();
-        await Axios.get("http://localhost:3005/api/auth/logout", { withCredentials: true, credentials: "include" })
+        await Axios.get("https://how-ez.vercel.app/api/auth/logout", { withCredentials: true, credentials: "include" })
             .then(res => {
                 if (res.status === 200) {
                     setLoginStatus(false)

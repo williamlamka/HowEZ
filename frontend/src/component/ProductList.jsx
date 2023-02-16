@@ -6,7 +6,7 @@ export default function ProductList(props) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        Axios.get("http://localhost:3005/api/product")
+        Axios.get("https://how-ez.vercel.app/api/product")
             .then((res) => {
                 if (res.status === 200) {
                     setProducts(res.data);

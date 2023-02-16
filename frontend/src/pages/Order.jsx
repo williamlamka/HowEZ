@@ -7,7 +7,7 @@ export default function Order() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        Axios.get("http://localhost:3005/api/user/order", { withCredentials: true })
+        Axios.get("https://how-ez.vercel.app/api/user/order", { withCredentials: true })
             .then((res) => {
                 if(res.data.success){
                     setOrder(res.data.detail);

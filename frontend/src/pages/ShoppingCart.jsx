@@ -19,7 +19,7 @@ export default function ShoppingCart() {
 
     useEffect(() => {
         if (loginStatus) {
-            Axios.get("http://localhost:3005/api/user/cart", { withCredentials: true })
+            Axios.get("https://how-ez.vercel.app/api/user/cart", { withCredentials: true })
                 .then((res) => {
                     if (res.data.detail) {
                         setCart(res.data.detail);
@@ -34,7 +34,7 @@ export default function ShoppingCart() {
     }
 
     function onClickHandler(key) {
-        Axios.post("http://localhost:3005/api/user/cart/delete", {
+        Axios.post("https://how-ez.vercel.app/api/user/cart/delete", {
             id: key
         }, { withCredentials: true })
             .then(res => {

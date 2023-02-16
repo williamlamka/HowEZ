@@ -16,7 +16,7 @@ export default function Login() {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    await Axios.post("http://localhost:3005/api/auth/login", {
+    await Axios.post("https://how-ez.vercel.app/api/auth/login", {
       email: data.email,
       password: data.password
     }, { withCredentials: true })

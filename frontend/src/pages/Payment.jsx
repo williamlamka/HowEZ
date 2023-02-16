@@ -12,21 +12,21 @@ export default function Payment() {
     let total_price = 0;
 
     useEffect(() => {
-        Axios.get(`http://localhost:3005/api/user/${userId}`, { withCredentials: true })
+        Axios.get(`https://how-ez.vercel.app/api/user/${userId}`, { withCredentials: true })
             .then((res) => {
                 if (res.data) {
                     setUserInfo(res.data);
                 }
             });
 
-        Axios.get("http://localhost:3005/api/user/cart", { withCredentials: true })
+        Axios.get("https://how-ez.vercel.app/api/user/cart", { withCredentials: true })
             .then((res) => {
                 if (res.data.detail) {
                     setProduct(res.data.detail);
                 }
             });
 
-        Axios.get("http://localhost:3005/api/user/price", { withCredentials: true })
+        Axios.get("https://how-ez.vercel.app/api/user/price", { withCredentials: true })
             .then((res) => {
                 if (res.data.total_price) {
                     setPrice(res.data.total_price);
@@ -36,7 +36,7 @@ export default function Payment() {
 
     function onClickHandler(e) {
         e.preventDefault();
-        Axios.post("http://localhost:3005/api/user/order", {
+        Axios.post("https://how-ez.vercel.app/api/user/order", {
             products: product,
             price: price
         }, { withCredentials: true })

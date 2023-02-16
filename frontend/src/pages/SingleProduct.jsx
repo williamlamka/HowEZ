@@ -15,7 +15,7 @@ export default function SingleProduct() {
   const addCartHandler = ((e) => {
     e.preventDefault();
     if (loginStatus) {
-      Axios.post("http://localhost:3005/api/user/cart", {
+      Axios.post("https://how-ez.vercel.app/api/user/cart", {
         product_id: Params.id
       }, { withCredentials: true })
         .then((res) => {
@@ -33,7 +33,7 @@ export default function SingleProduct() {
   const checkOutHandler = ((e) => {
     e.preventDefault();
     if (loginStatus) {
-      Axios.post("http://localhost:3005/api/user/cart", {
+      Axios.post("https://how-ez.vercel.app/api/user/cart", {
         product_id: Params.id
       }, { withCredentials: true })
         .then((res) => {
@@ -50,7 +50,7 @@ export default function SingleProduct() {
   });
 
   useEffect(() => {
-    Axios.get(`http://localhost:3005/api/product/${Params.id}`, { withCredentials: true })
+    Axios.get(`https://how-ez.vercel.app/api/product/${Params.id}`, { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
           setProduct(res.data);

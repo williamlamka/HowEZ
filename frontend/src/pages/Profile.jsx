@@ -18,7 +18,7 @@ export default function Profile() {
     const [prompt, setPrompt] = useState("");
 
     useEffect(() => {
-        Axios.get(`http://localhost:3005/api/user/${userId}`, { withCredentials: true })
+        Axios.get(`https://how-ez.vercel.app/api/user/${userId}`, { withCredentials: true })
                         .then((res) => {
                             if (res.status === 200) {
                                 setData({
@@ -33,13 +33,13 @@ export default function Profile() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        await Axios.get("http://localhost:3005/api/auth/verifyLogin", { withCredentials: true })
+        await Axios.get("https://how-ez.vercel.app/api/auth/verifyLogin", { withCredentials: true })
             .then((res) => {
                 if (res.data.auth) {
                     setUserId(res.data.id);
                 }
             })
-        await Axios.post(`http://localhost:3005/api/user/${userId}`, {
+        await Axios.post(`https://how-ez.vercel.app/api/user/${userId}`, {
             firstName: data.firstName,
             lastName: data.lastName,
             email: data.email,

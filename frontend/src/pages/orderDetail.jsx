@@ -12,14 +12,14 @@ export default function OrderDetail() {
     const Params = useParams("id");
 
     useEffect(() => {
-        Axios.get(`http://localhost:3005/api/user/${userId}`, { withCredentials: true })
+        Axios.get(`https://how-ez.vercel.app/api/user/${userId}`, { withCredentials: true })
             .then((res) => {
                 if (res.status === 200) {
                     setUserInfo(res.data);
                 }
             });
 
-        Axios.get(`http://localhost:3005/api/user/order/${Params.id}`, { withCredentials: true })
+        Axios.get(`https://how-ez.vercel.app/api/user/order/${Params.id}`, { withCredentials: true })
             .then((res) => {
                 if (res.data.success) {
                     setOrder(res.data.order);

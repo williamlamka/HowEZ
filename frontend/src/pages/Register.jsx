@@ -18,7 +18,7 @@ export default function Register() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        await Axios.post("http://localhost:3005/api/auth/register", {
+        await Axios.post("https://how-ez.vercel.app/api/auth/register", {
             firstName: data.firstName,
             lastName: data.lastName,
             email: data.email,
