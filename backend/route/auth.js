@@ -112,9 +112,9 @@ router.get("/google/redirect", passport.authenticate("google", { session: false 
     if(req.user){
         const token = jwt.sign({ id: req.user._id, name: req.user.firstName }, process.env.JWT);
         res.cookie("access_token", token, { httpOnly: true });
-        res.redirect("http://localhost:3000");
+        res.redirect("https://howez.vercel.app");
     }else{
-        res.redirect("http://localhost:3000/login");
+        res.redirect("https://howez.vercel.app/login");
     }
 });
 
