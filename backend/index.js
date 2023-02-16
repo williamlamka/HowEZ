@@ -12,7 +12,7 @@ import passport from "passport";
 const app = express();
 dotenv.config();
 const corsOptions ={
-    origin:'https://howez.vercel.app/', 
+    origin:'https://howez.vercel.app', 
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
