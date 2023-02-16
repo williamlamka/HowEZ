@@ -95,7 +95,7 @@ router.post("/login", async function (req, res) {
         }
 
         const token = jwt.sign({ id: user._id, name: user.firstName }, process.env.JWT);
-        res.cookie("access_token", token, { httpOnly: true });
+        res.cookie("access_token", token, { httpOnly: true, secure: true });
         res.json({
             "auth": true,
             "name": user.firstName,
