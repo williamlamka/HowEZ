@@ -9,7 +9,9 @@ export default function Order() {
     useEffect(() => {
         Axios.get("http://localhost:3005/api/user/order", { withCredentials: true })
             .then((res) => {
-                setOrder(res.data.detail);
+                if(res.data.success){
+                    setOrder(res.data.detail);
+                }
             });
     }, [])
 
@@ -32,7 +34,7 @@ export default function Order() {
                         </tr>
                     </thead>
                     <tbody>
-                        {order[0] ? (order.map(item => {
+                        {(order.lenght !== 0)? (order.map(item => {
                             return (
                                 <tr>
                                     <td>{item._id}</td>
@@ -47,7 +49,7 @@ export default function Order() {
                                     </td>
                                 </tr>
                             )
-                        })) : <div />}
+                        })) : <div/>}
                     </tbody>
                 </table>
             </div>

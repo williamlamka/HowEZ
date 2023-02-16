@@ -87,13 +87,14 @@ router.get("/order", verifyUser, async function (req, res) {
         }
         if (user.order.length === 0) {
             return res.json({
-                success: true,
+                success: false,
                 detail: "No Order!"
             });
         }
         const orderList = await Promise.all(user.order.map(async (item) => {
             return item
         }));
+
         res.json({
             success: true,
             detail: orderList
