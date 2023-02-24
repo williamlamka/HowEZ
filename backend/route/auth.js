@@ -95,7 +95,7 @@ router.post("/login", async function (req, res) {
         }
 
         const token = jwt.sign({ id: user._id, name: user.firstName }, process.env.JWT);
-        res.cookie("access_token", token);
+        res.cookie("access_token", token, {sameSite: "none"});
         res.json({
             "auth": true,
             "name": user.firstName,
@@ -111,7 +111,7 @@ router.get("/google", passport.authenticate("google", { scope: ["email", "profil
 router.get("/google/redirect", passport.authenticate("google", { session: false }), function(req, res){
     if(req.user){
         const token = jwt.sign({ id: req.user._id, name: req.user.firstName }, process.env.JWT);
-        res.cookie("access_token", token);
+        res.cookie("access_token", token, {sameSite: "none"});
         res.redirect("https://howez.vercel.app");
     }else{
         res.redirect("https://howez.vercel.app/login");
