@@ -133,7 +133,7 @@ router.get("/verifyLogin", verifyToken, async function (req, res) {
 });
 
 router.get("/logout", function (req, res) {
-    res.status(200).clearCookie("access_token");
+    res.status(200).clearCookie("access_token", {sameSite: "none", httpOnly: true, secure: true});
     res.end();
 });
 
